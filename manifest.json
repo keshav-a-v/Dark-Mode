@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Quick Dark Toggle",
+  "version": "1.0",
+  "description": "Click the toolbar icon to toggle a dark filter on the current page. Images and video keep original colors.",
+  "permissions": ["activeTab", "scripting"],
+  "background": { "service_worker": "background.js" },
+  "action": {
+  "default_title": "Toggle dark mode",
+  "default_icon": "logo.png"
+}
+}
