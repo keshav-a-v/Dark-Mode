@@ -1,12 +1,25 @@
 {
   "manifest_version": 3,
   "name": "Quick Dark Toggle",
-  "version": "1.0",
-  "description": "Click the toolbar icon to toggle a dark filter on the current page. Images and video keep original colors.",
-  "permissions": ["activeTab", "scripting"],
+  "version": "1.1",
+  "description": "Toggle a dark filter per site. Remembers your choice, syncs across tabs, and keeps images and video in their original colors.",
+  "permissions": ["activeTab", "scripting", "storage"],
   "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
   "action": {
-  "default_title": "Toggle dark mode",
-  "default_icon": "logo.png"
-}
+    "default_title": "Toggle dark mode (Alt+Shift+D)",
+    "default_icon": "logo.png"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": { "default": "Alt+Shift+D" },
+      "description": "Toggle dark mode on this site"
+    }
+  }
 }
